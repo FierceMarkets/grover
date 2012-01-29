@@ -17,7 +17,17 @@
   "dependencies": {
     "hubot": "2.1.0",
     "hubot-scripts": "2.0.2",
-    "optparse": "1.0.3"
+    "optparse": "1.0.3",
+
+    "redis": "0.6.7",
+    "jsdom": "==0.2.0",
+    "xml2js": "0.1.x",
+    "soupselect": "0.2.0",
+    "htmlparser": "1.7.x",
+    "wwwdude": "0.1.0",
+    "underscore": ">= 1.2.1",
+    "underscore.string": ">= 1.1.6",
+    "nodepie": "0.4.0"
   }
 }
 
