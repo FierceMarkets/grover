@@ -15,7 +15,7 @@ module.exports = (robot) ->
         key: process.env.HUBOT_GOOGLE_SEARCH_KEY
         cx: process.env.HUBOT_GOOGLE_SEARCH_CX
         fields: "items(title,link)"
-        num: 5
+        num: 1
         q: msg.match[3]
       .get() (err, res, body) ->
         resp = "";
@@ -25,6 +25,6 @@ module.exports = (robot) ->
             resp += err.message
         else
           results.items.forEach (item) ->
-            resp += item.title + " - " + item.link + "\n"
+            resp += item.title + " - " + item.link
 
         msg.send resp
