@@ -66,3 +66,6 @@ module.exports = (robot) ->
 
   robot.respond /(what should i do about)(.*)/i, (msg) ->
     msg.send "Escalate to Carson!"
+
+  robot.respond /(alan)/i, (msg) ->
+    msg.send "http://www.youtube.com/watch?v=aXqkNF8fgs8"
