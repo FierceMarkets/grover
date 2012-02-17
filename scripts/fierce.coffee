@@ -69,3 +69,6 @@ module.exports = (robot) ->
 
   robot.respond /(alan)/i, (msg) ->
     msg.send "http://www.youtube.com/watch?v=aXqkNF8fgs8"
+
+  robot.hear /(right about now)/i, (msg) ->
+    msg.send "Funk Soul Brother"
