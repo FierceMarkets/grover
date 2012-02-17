@@ -61,3 +61,8 @@ module.exports = (robot) ->
   robot.respond /(find) in (project|dir)/i, (msg) ->
     msg.send 'find . -type f | xargs grep -i "sharethis"'
 
+  robot.hear /(ETC|Escalate to Carson)/i, (msg) ->
+    msg.send "http://www.salem-news.com/stimg/august042010/f-bomb-2.jpg"
+
+  robot.respond /(what should i do about)(.*)/i, (msg) ->
+    msg.send "Escalate to Carson!"
