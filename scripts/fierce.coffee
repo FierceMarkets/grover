@@ -56,7 +56,7 @@ words = [
 
 module.exports = (robot) ->
   robot.respond /(fierce|fierce me)(.*)/i, (msg) ->
-    msg.send "The next Fierce publication will be Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)]
+    msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
 
   robot.respond /(find) in (project|dir)/i, (msg) ->
     msg.send 'find . -type f | xargs grep -i "sharethis"'
