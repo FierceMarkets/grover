@@ -58,8 +58,8 @@ module.exports = (robot) ->
   robot.respond /(fierce|fierce me)(.*)/i, (msg) ->
     msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
 
-  robot.respond /(find) in (project|dir)/i, (msg) ->
-    msg.send 'find . -type f | xargs grep -i "sharethis"'
+  robot.respond /(find) in (project|dir) (*)/i, (msg) ->
+    msg.send 'find . -type f | xargs grep -i "' + msg.match[3] + '"'
 
   robot.hear /(ETC|Escalate to Carson)/i, (msg) ->
     msg.send "http://www.salem-news.com/stimg/august042010/f-bomb-2.jpg"
