@@ -2,6 +2,50 @@
 #
 # fierce me - The next Fierce publication will be called
 #
+# Track arbitrary karma
+#
+# <thing>++ - give thing some karma
+# <thing>-- - take away some of thing's karma
+# karma <thing> - check thing's karma (if <thing> is omitted, show the top 5)
+# karma empty <thing> - empty a thing's karma
+# karma best - show the top 5
+# karma worst - show the bottom 5
+class Karma
+  
+  constructor: (@robot) ->
+    @cache = {}
+    
+    @increment_responses = [
+      "+1!", "gained a level!", "is on the rise!", "leveled up!"
+    ]
+  
+    @decrement_responses = [
+      "took a hit! Ouch.", "took a dive.", "lost a life.", "lost a level."
+    ]
+    
+    @robot.brain.on 'loaded', =>
+      if @robot.brain.data.karma
+        @cache = @robot.brain.data.karma
+  
+  kill: (thing) ->
+    delete @cache[thing]
+    @robot.brain.data.karma = @cache
+  
+  increment: (thing) ->
+    @cache[thing] ?= 0
+    @cache[thing] += 1
+    @robot.brain.data.karma = @cache
+
+  decrement: (thing) ->
+    @cache[thing] ?= 0
+    @cache[thing] -= 1
+    @robot.brain.data.karma = @cache
+  
+  incrementResponse: ->
+     @increment_responses[Math.floor(Math.random() * @increment_responses.length)]
+  
+  decrementResponse: ->
+     @decrement_responses[Math.floor(Math.random() * @decrement_responses.length)]
 
 words = [
   "Wireless",
@@ -85,3 +129,8 @@ module.exports = (robot) ->
 
   robot.hear /(pause|paws)/i, (msg) ->
     msg.send "http://www.wppl.org/kidsteens/paws.jpg"
+
+  robot.hear /(fucking|fuckin) (.*)/i, (msg) ->
+    subject = msg.match[2].toLowerCase()
+    karma.decrement subject
+    msg.send "#{subject} #{karma.decrementResponse()} (Karma: #{karma.get(subject)})"
