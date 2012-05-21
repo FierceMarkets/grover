@@ -61,7 +61,7 @@ module.exports = (robot) ->
       if pub is "me"
         msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
       else
-        msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + msg.match[2] + "&ext=.png"
+        msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + pub + "&ext=.png"
     else
       msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
 
