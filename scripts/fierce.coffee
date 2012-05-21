@@ -47,6 +47,10 @@ class Karma
   decrementResponse: ->
      @decrement_responses[Math.floor(Math.random() * @decrement_responses.length)]
 
+  get: (thing) ->
+    k = if @cache[thing] then @cache[thing] else 0
+    return k
+
 words = [
   "Wireless",
   "Europe",
