@@ -55,7 +55,10 @@ words = [
 ]
 
 module.exports = (robot) ->
-  robot.respond /(fierce|fierce me)/i, (msg) ->
+  robot.respond /(fierce) (.*)/i, (msg) ->
+    msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + msg.match[2] + "&ext=.png"
+
+  robot.respond /(fierce me)/i, (msg) ->
     msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
 
   robot.respond /find in (project|dir|directory) (.*)/i, (msg) ->
@@ -67,7 +70,7 @@ module.exports = (robot) ->
   robot.hear /what should (i|we) do about/i, (msg) ->
     msg.send "Escalate to Carson!"
 
-  robot.hear /alan/i, (msg) ->
+  robot.hear / alan/i, (msg) ->
     msg.send "http://www.youtube.com/watch?v=aXqkNF8fgs8"
 
   robot.hear /right about now/i, (msg) ->
