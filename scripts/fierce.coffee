@@ -77,7 +77,7 @@ module.exports = (robot) ->
   robot.hear /what should (i|we) do about/i, (msg) ->
     msg.send "Escalate to Carson!"
 
-  robot.hear / alan/i, (msg) ->
+  robot.hear /(^| )alan/i, (msg) ->
     msg.send "http://www.youtube.com/watch?v=aXqkNF8fgs8"
 
   robot.hear /right about now/i, (msg) ->
