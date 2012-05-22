@@ -57,7 +57,7 @@ class Karma
      'Yeah, Fuck'
 
   doubleIncrementResponse: ->
-     '♥ ♥'
+     "♥ ♥"
 
   get: (thing) ->
     k = if @cache[thing] then @cache[thing] else 0
