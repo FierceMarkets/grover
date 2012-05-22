@@ -120,4 +120,4 @@ module.exports = (robot) ->
     subject = msg.match[2].toLowerCase()
     outputSubject = subject.charAt(0).toUpperCase() + subject.slice(1)
     karma.doubleIncrement subject
-    msg.send "#{msg.message.user.name} and #{outputSubject} sitting in a tree... (Karma: #{karma.get(subject)})"
+    msg.send "#{karma.doubleIncrementResponse()} #{outputSubject} #{karma.doubleIncrementResponse()} (Karma: #{karma.get(subject)})"
