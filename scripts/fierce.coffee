@@ -57,7 +57,6 @@ words = [
 module.exports = (robot) ->
   robot.respond /fierce( )?(.*)/i, (msg) ->
     pub = msg.match[2] || ''
-    msg.send pub
     if pub is ''
       msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
     else
