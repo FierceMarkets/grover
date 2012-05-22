@@ -55,11 +55,18 @@ words = [
 ]
 
 module.exports = (robot) ->
-  robot.respond /(fierce) (.*)/i, (msg) ->\
-    if msg.match[2]
-      msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + msg.match[2] + "&ext=.png"
+  robot.respond /(fierce)(.*)/i, (msg) ->\
+    pub = msg.match[2]
+    if pub
+      if pub is "me"
+        msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
+      else
+        msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + pub + "&ext=.png"
     else
       msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
+
+  robot.respond /(fierce me)/i, (msg) ->
+    msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
 
   robot.respond /(fierce me)/i, (msg) ->
     msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
