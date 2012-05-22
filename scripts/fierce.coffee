@@ -56,21 +56,22 @@ words = [
 
 module.exports = (robot) ->
   robot.respond /fierce( )?(.*)/i, (msg) ->
-    pub = msg.match[2] | ''
-    if pub
+    pub = msg.match[2] || ''
+    msg.send pub
+    if pub is ''
+      msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
+    else
       if pub is "me"
         msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
       else
-        `words = pub.split(' ');
-        len = words.length;
-        for(i=0; i<len; i++) {
-          words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
-        }
-        pub = words.join('');`
+        w = pub.split(" ")
+        len = w.length
+        i = 0
+        while i < len
+          w[i] = w[i].charAt(0).toUpperCase() + w[i].slice(1)
+          i++
+        pub = w.join("")
         msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + pub + "&ext=.png"
-        pub = ''
-    else
-      msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
 
   robot.respond /find in (project|dir|directory) (.*)/i, (msg) ->
     msg.send 'find . -type f | xargs grep -i "' + msg.match[2] + '"'
