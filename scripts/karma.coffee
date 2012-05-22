@@ -103,7 +103,7 @@ module.exports = (robot) ->
     if match != "best" && match != "worst"
       msg.send "\"#{match}\" has #{karma.get(match)} karma."
   
-  robot.hear /(f'n|fuck|fuckn|fuck'n\fucking|fuckin'?) (.*)/i, (msg) ->
+  robot.hear /(f'n|fuck|fuckn|fuck'n|fucking|fuckin'?) (.*)/i, (msg) ->
     subject = msg.match[2].toLowerCase()
     karma.doubleDecrement subject
     msg.send "#{karma.doubleDecrementResponse()} #{subject} (Karma: #{karma.get(subject)})"
