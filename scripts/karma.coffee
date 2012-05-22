@@ -118,5 +118,6 @@ module.exports = (robot) ->
 
   robot.hear /(luv|love|lovin|lov'n|loving|lovin'?) (.*)/i, (msg) ->
     subject = msg.match[2].toLowerCase()
+    outputSubject = subject.charAt(0).toUpperCase() + subject.slice(1)
     karma.doubleIncrement subject
-    msg.send "#{karma.doubleIncrementResponse()} #{subject} #{karma.doubleIncrementResponse()} (Karma: #{karma.get(subject)})"
+    msg.send "#{msg.message.user.name} and #{outputSubject} sitting in a tree... (Karma: #{karma.get(subject)})"
