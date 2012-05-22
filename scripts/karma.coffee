@@ -57,7 +57,7 @@ class Karma
      'Yeah, Fuck'
 
   doubleIncrementResponse: ->
-     '<3 <3'
+     'http://www.www.sluniverse.com/pics/heart-icon.png http://www.www.sluniverse.com/pics/heart-icon.png'
 
   get: (thing) ->
     k = if @cache[thing] then @cache[thing] else 0
