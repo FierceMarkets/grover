@@ -55,7 +55,7 @@ words = [
 ]
 
 module.exports = (robot) ->
-  robot.respond /(fierce) (.*)/i, (msg) ->\
+  robot.respond /fierce( )?(.*)/i, (msg) ->
     pub = msg.match[2]
     if pub
       if pub is "me"
@@ -64,12 +64,6 @@ module.exports = (robot) ->
         msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + pub + "&ext=.png"
     else
       msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
-
-  robot.respond /(fierce me)/i, (msg) ->
-    msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
-
-  robot.respond /(fierce me)/i, (msg) ->
-    msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
 
   robot.respond /find in (project|dir|directory) (.*)/i, (msg) ->
     msg.send 'find . -type f | xargs grep -i "' + msg.match[2] + '"'
