@@ -1,5 +1,6 @@
 # Add trello cards to a list.
 #
+# hubot trello add <cardname> - Adds a card with the given text to a predefined list
 
 # Environment variables
 # TRELLO_API_KEY
