@@ -37,11 +37,19 @@ class Karma
     @cache[thing] -= 1
     @robot.brain.data.karma = @cache
   
+  doubleDecrement: (thing) ->
+    @cache[thing] ?= 0
+    @cache[thing] -= 2
+    @robot.brain.data.karma = @cache
+
   incrementResponse: ->
      @increment_responses[Math.floor(Math.random() * @increment_responses.length)]
   
   decrementResponse: ->
      @decrement_responses[Math.floor(Math.random() * @decrement_responses.length)]
+
+  doubleDecrementResponse: ->
+     'Yeah, Fuck'
 
   get: (thing) ->
     k = if @cache[thing] then @cache[thing] else 0
@@ -95,3 +103,7 @@ module.exports = (robot) ->
     if match != "best" && match != "worst"
       msg.send "\"#{match}\" has #{karma.get(match)} karma."
   
+  robot.hear /(fucking|fuckin'?) (.*)/i, (msg) ->
+    subject = msg.match[2].toLowerCase()
+    karma.doubleDecrement subject
+    msg.send "#{karma.doubleDecrementResponse()} #{subject} (Karma: #{karma.get(subject)})"
