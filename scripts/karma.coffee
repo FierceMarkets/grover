@@ -42,6 +42,11 @@ class Karma
     @cache[thing] -= 2
     @robot.brain.data.karma = @cache
 
+  doubleIncrement: (thing) ->
+    @cache[thing] ?= 0
+    @cache[thing] += 2
+    @robot.brain.data.karma = @cache
+
   incrementResponse: ->
      @increment_responses[Math.floor(Math.random() * @increment_responses.length)]
   
@@ -50,6 +55,9 @@ class Karma
 
   doubleDecrementResponse: ->
      'Yeah, Fuck'
+
+  doubleIncrementResponse: ->
+     '&heart; &heart;'
 
   get: (thing) ->
     k = if @cache[thing] then @cache[thing] else 0
@@ -107,3 +115,8 @@ module.exports = (robot) ->
     subject = msg.match[2].toLowerCase()
     karma.doubleDecrement subject
     msg.send "#{karma.doubleDecrementResponse()} #{subject} (Karma: #{karma.get(subject)})"
+
+  robot.hear /(luv|love|lovin|lov'n|loving|lovin'?) (.*)/i, (msg) ->
+    subject = msg.match[2].toLowerCase()
+    karma.doubleIncrement subject
+    msg.send "#{karma.doubleIncrementResponse()} #{subject} #{karma.doubleIncrementResponse()} (Karma: #{karma.get(subject)})"
