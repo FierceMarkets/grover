@@ -27,7 +27,8 @@
     "wwwdude": "0.1.0",
     "underscore": ">= 1.2.1",
     "underscore.string": ">= 1.1.6",
-    "nodepie": "0.4.0"
+    "nodepie": "0.4.0",
+    "node-trello": ">= 0.0.2"
   }
 }
 
