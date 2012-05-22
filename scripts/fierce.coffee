@@ -55,7 +55,7 @@ words = [
 ]
 
 module.exports = (robot) ->
-  robot.respond /(fierce)(.*)/i, (msg) ->\
+  robot.respond /(fierce) (.*)/i, (msg) ->\
     pub = msg.match[2]
     if pub
       if pub is "me"
