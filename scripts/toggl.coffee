@@ -1,4 +1,8 @@
-# Get our toggl statuses
+# Show toggl status
+#
+# hubot toggl keyadd <yourapikey> - Remember my toggl api key
+# hubot toggl keydel - Forget my toggl api key
+# hubot toggl status - Show my recent time entries
 #
 
 module.exports = (robot) ->
@@ -13,4 +17,22 @@ module.exports = (robot) ->
     msg.reply("Ok, I lost your toggl key.")
 
   robot.respond /toggl status/i, (msg) ->
-    msg.send "Stub function.  This is where I would loop through the api keys I have stored and display that status for each of you."
+    users = [msg.message.user]
+    users.forEach (user) ->
+      if user.togglKey?
+        encodedAuth = new Buffer(user.togglKey + ':api_token').toString('base64')
+
+        msg
+          .http("https://www.toggl.com/api/v6/time_entries.json")
+          .header('Authorization', 'Basic ' + encodedAuth)
+          .get() (err, res, body) ->
+            resp = user.name + "\n";
+            results = JSON.parse(body)
+            if results.error
+              results.error.errors.forEach (err) ->
+                resp += err.message
+            else
+              results.data.forEach (item) ->
+                resp += item.start + " - " + item.description + " - " + item.duration + " sec\n"
+
+            msg.send resp
