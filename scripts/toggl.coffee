@@ -17,6 +17,7 @@ module.exports = (robot) ->
     msg.reply("Ok, I lost your toggl key.")
 
   robot.respond /toggl status/i, (msg) ->
+    resp = ""
     users = [msg.message.user]
     users.forEach (user) ->
       if user.togglKey?
@@ -26,13 +27,20 @@ module.exports = (robot) ->
           .http("https://www.toggl.com/api/v6/time_entries.json")
           .header('Authorization', 'Basic ' + encodedAuth)
           .get() (err, res, body) ->
-            resp = user.name + "\n";
+
+            resp += user.name + "\n";
             results = JSON.parse(body)
             if results.error
               results.error.errors.forEach (err) ->
                 resp += err.message
             else
-              results.data.forEach (item) ->
-                resp += item.start + " - " + item.description + " - " + item.duration + " sec\n"
+              item = results[results.length - 1]
+              resp += item.start + " - " + item.description
+              if item.duration < 0
+                resp += " - doing"
+              else
+                resp += " - " + item.duration + " sec"
 
-            msg.send resp
+            resp += "\n"
+
+    msg.send resp
