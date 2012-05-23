@@ -34,7 +34,7 @@ module.exports = (robot) ->
               results.error.errors.forEach (err) ->
                 resp += err.message
             else
-              item = results[results.length - 1]
+              item = results.data[results.length - 1]
               resp += item.start + " - " + item.description
               if item.duration < 0
                 resp += " - doing"
