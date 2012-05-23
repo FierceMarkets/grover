@@ -35,11 +35,6 @@ module.exports = (robot) ->
                 resp += err.message
             else
               results.data.forEach (item) ->
-                resp += item.start + " - " + item.description
-                if item.duration < 0
-                  resp += " - doing"
-                else
-                  resp += " - " + item.duration + " sec"
-                resp += "\n"
+                resp += item.start + " - " + item.description + " - " + item.duration + " sec\n"
 
-    msg.send resp
+            msg.send resp
