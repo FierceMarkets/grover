@@ -1,3 +1,3 @@
 module.exports = (robot) ->
   robot.hear /frover /i, (msg) ->
-    msg.send 'The names Grover BITCH!'
+    msg.send 'The name\'s Grover BITCH!'
