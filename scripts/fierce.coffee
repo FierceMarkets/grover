@@ -58,10 +58,10 @@ module.exports = (robot) ->
   robot.respond /fierce( )?(.*)/i, (msg) ->
     pub = msg.match[2] || ''
     if pub is ''
-      msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
+      msg.send "https://secure.fiercemarkets.com/fierceme?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
     else
       if pub is "me"
-        msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
+        msg.send "https://secure.fiercemarkets.com/fierceme?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
       else
         w = pub.split(" ")
         len = w.length
@@ -70,7 +70,7 @@ module.exports = (robot) ->
           w[i] = w[i].charAt(0).toUpperCase() + w[i].slice(1)
           i++
         pub = w.join("")
-        msg.send "http://www.mutatedcreativity.com/dev/f/logo/?pub=Fierce" + pub + "&ext=.png"
+        msg.send "https://secure.fiercemarkets.com/fierceme?pub=Fierce" + pub + "&ext=.png"
 
   robot.respond /find in (project|dir|directory) (.*)/i, (msg) ->
     msg.send 'find . -type f | xargs grep -i "' + msg.match[2] + '"'
