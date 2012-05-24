@@ -92,6 +92,3 @@ module.exports = (robot) ->
 
   robot.hear /(pause|paws)/i, (msg) ->
     msg.send "http://www.wppl.org/kidsteens/paws.jpg"
-
-  robot.hear /(security|secure)/i, (msg) ->
-    msg.send "&lt;!--- TODO: add security ---&gt;"
