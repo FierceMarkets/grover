@@ -62,6 +62,9 @@ module.exports = (robot) ->
     else
       if pub is "me"
         msg.send "https://secure.fiercemarkets.com/fierceme?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png"
+      else if pub is "bomb"
+        count = 5
+        msg.send "https://secure.fiercemarkets.com/fierceme?pub=Fierce" + words[Math.floor(Math.random() * words.length)] + words[Math.floor(Math.random() * words.length)] + "&ext=.png" for i in [0...count]
       else
         w = pub.split(" ")
         len = w.length
