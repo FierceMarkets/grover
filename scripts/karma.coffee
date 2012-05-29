@@ -113,6 +113,8 @@ module.exports = (robot) ->
   
   robot.hear /(f'n|fuck|fuckn|fuck'n|fucking|fuckin'?) (.*)/i, (msg) ->
     subject = msg.match[2].toLowerCase()
+    temp = subject.split(" ");
+    subject = temp[temp.length-1];
     karma.doubleDecrement subject
     msg.send "#{karma.doubleDecrementResponse()} #{subject} (Karma: #{karma.get(subject)})"
 
