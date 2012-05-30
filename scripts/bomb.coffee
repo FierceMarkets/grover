@@ -1,7 +1,7 @@
 module.exports = (robot) ->
   robot.respond /(.*) bomb( (\d+))?/i, (msg) ->
     subject = msg.match[1]
-    if subject isnt "carson" and subject isnt "corgi" and subject isnt "pug"
+    if subject isnt "carson" and subject isnt "corgi" and subject isnt "pug" and subject isnt "maurice"
       count = msg.match[2] || 5
       imageMe msg, count, subject
 
