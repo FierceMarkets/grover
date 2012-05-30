@@ -1,17 +1,17 @@
 module.exports = (robot) ->
   robot.respond /(.*) bomb( (\d+))?/i, (msg) ->
     subject = msg.match[1]
-    count = msg.match[2] || 5
-    for i in [0...count]
-	    imageMe msg, subject, (url) ->
-	    	msg.send url
+    if subject isnt "carson" and subject isnt "corgi" and subject isnt "pug"
+      count = msg.match[2] || 5
+      imageMe msg, count, subject
 
-imageMe = (msg, query, cb) ->
+imageMe = (msg, count, query) ->
   msg.http('http://ajax.googleapis.com/ajax/services/search/images')
     .query(v: "1.0", rsz: '8', q: query)
     .get() (err, res, body) ->
       images = JSON.parse(body)
       images = images.responseData.results
       if images.length > 0
-        image  = msg.random images
-        cb "#{image.unescapedUrl}#.png"
+        for i in [0...count]
+          image = msg.random images
+          msg.send "#{image.unescapedUrl}#.png"
