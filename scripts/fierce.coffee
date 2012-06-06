@@ -92,3 +92,6 @@ module.exports = (robot) ->
 
   robot.hear /(pause|paws)/i, (msg) ->
     msg.send "http://www.wppl.org/kidsteens/paws.jpg"
+
+  robot.hear /(phil|philip|phillip)/i, (msg) ->
+    msg.send "https://fiercemarkets.campfirenow.com/room/470540/uploads/3179113/philweb1.jpg"
