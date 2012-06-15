@@ -44,12 +44,29 @@ module.exports = (robot) ->
       msg.send "Please specify the Trello List ID in TRELLO_LIST_ID"
       return
 
-    Trello = require("node-trello");
-    t = new Trello(process.env.TRELLO_API_KEY, process.env.TRELLO_TOKEN);
-    args =
-      name: msg.match[1]
-      idList: process.env.TRELLO_LIST_ID
+    trelloIt msg
 
-    t.post "/1/cards", args, (err, data) ->
-      msg.send err if err
-      msg.send "Added card: " + args.name + " - " + data.url
+module.exports = (robot) ->
+  robot.hear /we should (.*)/i, (msg) ->
+    unless process.env.TRELLO_API_KEY?
+      msg.send "Please specify the Trello API key in TRELLO_API_KEY"
+      return
+    unless process.env.TRELLO_TOKEN?
+      msg.send "Please specify the Trello token in TRELLO_TOKEN"
+      return
+    unless process.env.TRELLO_LIST_ID?
+      msg.send "Please specify the Trello List ID in TRELLO_LIST_ID"
+      return
+
+    trelloIt msg
+
+trelloIt = (msg) ->
+  Trello = require("node-trello");
+  t = new Trello(process.env.TRELLO_API_KEY, process.env.TRELLO_TOKEN);
+  args =
+    name: msg.match[1]
+    idList: process.env.TRELLO_LIST_ID
+
+  t.post "/1/cards", args, (err, data) ->
+    msg.send err if err
+    msg.send "Added card: " + args.name + " - " + data.url
