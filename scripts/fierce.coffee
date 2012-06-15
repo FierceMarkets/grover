@@ -95,3 +95,6 @@ module.exports = (robot) ->
 
   robot.hear /(phil|philip|phillip|fill)/i, (msg) ->
     msg.send "https://fiercemarkets.campfirenow.com/room/470540/uploads/3179113/philweb1.jpg"
+
+  robot.hear /secur(e|ity)/i, (msg) ->
+    msg.send 'TODO: add security'
