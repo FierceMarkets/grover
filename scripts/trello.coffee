@@ -64,7 +64,7 @@ trelloIt = (msg) ->
   Trello = require("node-trello");
   t = new Trello(process.env.TRELLO_API_KEY, process.env.TRELLO_TOKEN);
   args =
-    name: msg.match[1]
+    name: msg.match[2]
     idList: process.env.TRELLO_LIST_ID
 
   t.post "/1/cards", args, (err, data) ->
