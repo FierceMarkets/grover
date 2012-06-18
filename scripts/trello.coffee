@@ -35,6 +35,7 @@
 module.exports = (robot) ->
   robot.respond /trello add (.*)/i, (msg) ->
     subject = msg.match[1]
+    msg.send subject
     unless process.env.TRELLO_API_KEY?
       msg.send "Please specify the Trello API key in TRELLO_API_KEY"
       return
@@ -49,6 +50,7 @@ module.exports = (robot) ->
 
   robot.hear /^we (sh|c)ould (.*)/i, (msg) ->
     subject = msg.match[2]
+    msg.send subject
     unless process.env.TRELLO_API_KEY?
       msg.send "Please specify the Trello API key in TRELLO_API_KEY"
       return
