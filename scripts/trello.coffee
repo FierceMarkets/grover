@@ -34,6 +34,7 @@
 
 module.exports = (robot) ->
   robot.respond /trello add (.*)/i, (msg) ->
+    subject = msg.match[1]
     unless process.env.TRELLO_API_KEY?
       msg.send "Please specify the Trello API key in TRELLO_API_KEY"
       return
@@ -44,10 +45,10 @@ module.exports = (robot) ->
       msg.send "Please specify the Trello List ID in TRELLO_LIST_ID"
       return
 
-    trelloIt msg
+    trelloIt subject msg
 
-module.exports = (robot) ->
   robot.hear /^we (sh|c)ould (.*)/i, (msg) ->
+    subject = msg.match[2]
     unless process.env.TRELLO_API_KEY?
       msg.send "Please specify the Trello API key in TRELLO_API_KEY"
       return
@@ -58,13 +59,13 @@ module.exports = (robot) ->
       msg.send "Please specify the Trello List ID in TRELLO_LIST_ID"
       return
 
-    trelloIt msg
+    trelloIt subject msg
 
-trelloIt = (msg) ->
+trelloIt = (subject, msg) ->
   Trello = require("node-trello");
   t = new Trello(process.env.TRELLO_API_KEY, process.env.TRELLO_TOKEN);
   args =
-    name: msg.match[2]
+    name: subject
     idList: process.env.TRELLO_LIST_ID
 
   t.post "/1/cards", args, (err, data) ->
