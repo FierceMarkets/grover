@@ -15,5 +15,5 @@ imageMe = (msg, count, query) ->
       images = images.responseData.results
       if images.length > 0
         for i in [0...count]
-          image = msg.random images
+          image = images[i]
           msg.send "#{image.unescapedUrl}#.png"
