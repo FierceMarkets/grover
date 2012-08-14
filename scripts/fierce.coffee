@@ -51,6 +51,8 @@ words = [
   "VoIP",
   "WiFi",
   "Researcher",
+  "Big",
+  "Data"
   "",
 ]
 
