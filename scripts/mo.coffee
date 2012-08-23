@@ -1,5 +1,5 @@
 module.exports = (robot) ->
-  robot.hear /max|over|drive/i, (msg) ->
+  robot.hear /max|drive/i, (msg) ->
     imageMe msg
 
 imageMe = (msg) ->
