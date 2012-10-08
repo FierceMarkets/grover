@@ -4,7 +4,7 @@ module.exports = (robot) ->
 
 imageMe = (msg) ->
   msg.http('http://ajax.googleapis.com/ajax/services/search/images')
-    .query(v: "1.0", rsz: '8', q: 'furious stylez')
+    .query(v: "1.0", rsz: '8', q: 'furious stylez pee wees playhouse')
     .get() (err, res, body) ->
       images = JSON.parse(body)
       images = images.responseData.results
