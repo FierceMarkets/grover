@@ -52,8 +52,11 @@ words = [
   "WiFi",
   "Researcher",
   "Big",
-  "Data"
-  "",
+  "Data",
+  "Store",
+  "Front",
+  "Back",
+  "Talk"
 ]
 
 module.exports = (robot) ->
