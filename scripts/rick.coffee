@@ -1,7 +1,22 @@
-# Rick James
+# Description
+#   Rick
 #
+# Dependencies:
+#   None.
 #
+# Configuration:
+#   None.
 #
+# Commands:
+#   rick
+#
+# Notes:
+#   None.
+#
+# Author:
+#   jeremy-green
+
+
 module.exports = (robot) ->
   robot.hear /(rick)/i, (msg) ->
     imageMe msg

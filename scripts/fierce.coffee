@@ -1,7 +1,21 @@
-# The next Fierce publication
+# Description
+#   The next FierceMarkets publication and other inside jokes.
 #
-# fierce me - The next Fierce publication will be called
+# Dependencies:
+#   None.
 #
+# Configuration:
+#   None.
+#
+# Commands:
+#   hubot fierce <thing> - Fierces a thing
+#   and other silliness
+#
+# Notes:
+#   None.
+#
+# Author:
+#   jeremy-green and dbarbar
 
 words = [
   "Wireless",
@@ -56,7 +70,12 @@ words = [
   "Store",
   "Front",
   "Back",
-  "Talk"
+  "Talk",
+  "Storefront",
+  "Backtalk",
+  "Retail",
+  "CMO",
+  "Diagnostics"
 ]
 
 module.exports = (robot) ->

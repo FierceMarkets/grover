@@ -1,3 +1,22 @@
+# Description
+#   Provides various bombs to enterain us.
+#
+# Dependencies:
+#   None.
+#
+# Configuration:
+#   None.
+#
+# Commands:
+#   hubot <something> bomb - Bomb!
+#
+# Notes:
+#   None.
+#
+# Author:
+#   jeremy-green
+
+
 module.exports = (robot) ->
   robot.respond /(.*) bomb( (\d+))?/i, (msg) ->
     subject = msg.match[1]

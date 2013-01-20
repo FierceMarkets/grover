@@ -1,3 +1,22 @@
+# Description
+#   Display a cowboy curtis at the mention of furious or style.
+#
+# Dependencies:
+#   None.
+#
+# Configuration:
+#   None.
+#
+# Commands:
+#   furious
+#   style
+#
+# Notes:
+#   None.
+#
+# Author:
+#   jeremy-green
+
 module.exports = (robot) ->
   robot.hear /furious|style(s|z)?/i, (msg) ->
     imageMe msg

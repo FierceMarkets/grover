@@ -1,3 +1,21 @@
+# Description
+#   Excellent
+#
+# Dependencies:
+#   None.
+#
+# Configuration:
+#   None.
+#
+# Commands:
+#   excellent - Shows an image of Mr. Burns.
+#
+# Notes:
+#   None.
+#
+# Author:
+#   jeremy-green
+
 module.exports = (robot) ->
 	robot.hear /(excellent)/i, (msg) ->
 		imageMe msg, 'mr burns', (url) ->

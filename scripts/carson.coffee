@@ -1,3 +1,21 @@
+# Description
+#   Carson bombs
+#
+# Dependencies:
+#   None.
+#
+# Configuration:
+#   None.
+#
+# Commands:
+#   hubot carson bomb - The Carson bomb
+#
+# Notes:
+#   None.
+#
+# Author:
+#   jeremy-green
+
 module.exports = (robot) ->
 
 images = [

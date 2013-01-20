@@ -1,4 +1,26 @@
-# Display a picture of Satan if anyone invokes "satan" or says "666"
+# Description
+#   Display a picture of Satan if anyone invokes "satan" or says "666"
+#
+# Dependencies:
+#   None.
+#
+# Configuration:
+#   None.
+#
+# Commands:
+#   satan
+#   666
+#   devil
+#   lucifer
+#   santa
+#   stan
+#
+# Notes:
+#   None.
+#
+# Author:
+#   jeremy-green
+
 
 module.exports = (robot) ->
   robot.hear /(satan|666|devil|lucifer|santa|stan)/i, (msg) ->

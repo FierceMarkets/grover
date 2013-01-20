@@ -1,4 +1,21 @@
-# Utility commands surrounding Hubot uptime.
+# Description
+#   Pings someone by yelling at them.
+#
+# Dependencies:
+#   None.
+#
+# Configuration:
+#   None.
+#
+# Commands:
+#   hubot ping <person>
+#
+# Notes:
+#   None.
+#
+# Author:
+#   dbarbar
+
 module.exports = (robot) ->
   robot.respond /PING (.*)/i, (msg) ->
     yell = msg.match[1].toUpperCase() + "!"

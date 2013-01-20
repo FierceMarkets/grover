@@ -1,3 +1,22 @@
+# Description
+#   Maximum Overdrive
+#
+# Dependencies:
+#   None.
+#
+# Configuration:
+#   None.
+#
+# Commands:
+#   max
+#   drive
+#
+# Notes:
+#   None.
+#
+# Author:
+#   jeremy-green
+
 module.exports = (robot) ->
   robot.hear /max|drive/i, (msg) ->
     imageMe msg

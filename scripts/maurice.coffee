@@ -1,8 +1,24 @@
-# MauriceME
+# Description
+#   Maurice
 #
-# maurice - Maurice dancing
-# maurice bomb N - get N Maurices dancing
-# happy|dance - Maurice dancing
+# Dependencies:
+#   None.
+#
+# Configuration:
+#   None.
+#
+# Commands:
+#   maurice
+#   hubot maurice bomb
+#   hubot maurice me
+#   dance
+#   happy
+#
+# Notes:
+#   None.
+#
+# Author:
+#   jeremy-green
 
 module.exports = (robot) ->
 
