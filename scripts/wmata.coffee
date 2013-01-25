@@ -54,7 +54,7 @@ module.exports = (robot) ->
 
 metroMe = (msg, station) ->
   msg.http('http://api.wmata.com/StationPrediction.svc/json/GetPrediction/' + station)
-    .query(api_key: 'dw7c6dfmh29bg2y3rge6rr66')
+    .query(api_key: process.env.WMATA_API_KEY)
     .get() (err, res, body) ->
       body = JSON.parse(body)
       trains = body.Trains
