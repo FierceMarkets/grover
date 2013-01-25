@@ -55,5 +55,5 @@ metroMe = (msg, station) ->
       trains = body.Trains
       str = ''
       for train in trains
-        str += train.DestinationName + ': ' + train.Min + '\r\n'
+        str += '<' + train.Line + '>' + train.DestinationName + ': ' + train.Min + '\r\n'
       msg.send str
