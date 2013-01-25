@@ -38,7 +38,12 @@ stations = {
   rockville:'A14',
   shadygrove: 'A15',
   farragutwest : 'C03',
-  pentagon: 'C07'
+  pentagon: 'C07',
+  crystalcity: 'C09',
+  lenfant: 'F03',
+  vandorn:'J02',
+  franconia: 'J03',
+  springfield: 'J03'
 }
 
 module.exports = (robot) ->
