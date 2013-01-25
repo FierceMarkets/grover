@@ -54,6 +54,19 @@ metroMe = (msg, station) ->
       body = JSON.parse(body)
       trains = body.Trains
       str = ''
+      grp1 = []
+      grp2 = []
       for train in trains
-        str += '<' + train.Line + '>' + train.DestinationName + ': ' + train.Min + '\r\n'
+        if train.Group == '1'
+          ###str += '<GROUP1> '###
+          grp1.push(train)
+        else
+          ###str += '<GROUP2> '###
+          grp2.push(train)
+        ###str += '[' + train.Line + ']' + train.DestinationName + ': ' + train.Min + '\r\n'###
+      for train in grp1
+        str += '[' + train.Line + ']' + train.DestinationName + ': ' + train.Min + '\r\n'
+      str += '======================================\r\n'
+      for train in grp2
+        str += '[' + train.Line + ']' + train.DestinationName + ': ' + train.Min + '\r\n'
       msg.send str
