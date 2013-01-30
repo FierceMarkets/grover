@@ -18,8 +18,12 @@
 #   jeremy-green
 
 module.exports = (robot) ->
-  robot.hear /wor(f|d)?/i, (msg) ->
-    imageMe msg
+  robot.hear /(words?|worf)/i, (msg) ->
+    subject = msg.match[1]
+    if subject is 'worf'
+      imageMe msg
+    else
+      msg.send 'NODEWORDS!!'
 
 imageMe = (msg) ->
   msg.http('http://ajax.googleapis.com/ajax/services/search/images')
