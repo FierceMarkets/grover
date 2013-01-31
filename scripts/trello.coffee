@@ -80,7 +80,7 @@ trelloIt = (subject, msg) ->
   t = new Trello(process.env.TRELLO_API_KEY, process.env.TRELLO_TOKEN);
   args =
     name: subject
-    idList: process.env.TRELLO_LIST_ID
+    idList: '510acfdfeca4af654e004e83'
 
   t.post "/1/cards", args, (err, data) ->
     msg.send err if err
