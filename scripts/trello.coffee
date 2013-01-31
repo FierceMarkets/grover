@@ -35,7 +35,7 @@
 module.exports = (robot) ->
   robot.respond /trello add (.*)/i, (msg) ->
     subject = msg.match[1]
-    unless process.env.TRELLO_API_KEY?
+    ###unless process.env.TRELLO_API_KEY?
       msg.send "Please specify the Trello API key in TRELLO_API_KEY"
       return
     unless process.env.TRELLO_TOKEN?
@@ -43,13 +43,13 @@ module.exports = (robot) ->
       return
     unless process.env.TRELLO_LIST_ID?
       msg.send "Please specify the Trello List ID in TRELLO_LIST_ID"
-      return
+      return###
 
-    trelloIt subject, msg
+    trelloIt subject, '510acfdfeca4af654e004e85', msg
 
   robot.hear /^we (sh|c)ould (.*)/i, (msg) ->
     subject = msg.match[2]
-    unless process.env.TRELLO_API_KEY?
+    ###unless process.env.TRELLO_API_KEY?
       msg.send "Please specify the Trello API key in TRELLO_API_KEY"
       return
     unless process.env.TRELLO_TOKEN?
@@ -57,13 +57,13 @@ module.exports = (robot) ->
       return
     unless process.env.TRELLO_LIST_ID?
       msg.send "Please specify the Trello List ID in TRELLO_LIST_ID"
-      return
+      return###
 
-    trelloIt subject, msg
+    trelloIt subject, '510acfdfeca4af654e004e85', msg
 
   robot.hear /http(s?):\/\/(.*)/i, (msg) ->
     url = msg.match[0]
-    unless process.env.TRELLO_API_KEY?
+    ###unless process.env.TRELLO_API_KEY?
       msg.send "Please specify the Trello API key in TRELLO_API_KEY"
       return
     unless process.env.TRELLO_TOKEN?
@@ -71,20 +71,17 @@ module.exports = (robot) ->
       return
     unless process.env.TRELLO_LIST_ID?
       msg.send "Please specify the Trello List ID in TRELLO_LIST_ID"
-      return
+      return###
 
-    trelloIt url, msg
+    trelloIt url, '510acfdfeca4af654e004e84', msg
 
-trelloIt = (subject, msg) ->
+trelloIt = (subject, list, msg) ->
   Trello = require("node-trello");
-  t = new Trello(process.env.TRELLO_API_KEY, process.env.TRELLO_TOKEN);
+  t = new Trello('f8861742e853ac96d775dfb9106a7d26', '4320b0843e7254c4ab2613f9f01f92463c81f3e123ce4e1df5b9b6edba0f1fd4');
   args =
     name: subject
-    idList: '510acfdfeca4af654e004e83'
+    idList: list
 
-  msg.send 'I AM WORKING:'
-  msg.send 'API KEY: ' + process.env.TRELLO_API_KEY
-  msg.send 'TOKEN: ' + process.env.TRELLO_TOKEN
-  t.get "/1/cards", args, (err, data) ->
+  t.post "/1/cards", args, (err, data) ->
     msg.send err if err
     msg.send "Added card: " + args.name + " - " + data.url
