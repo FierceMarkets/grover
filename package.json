@@ -28,7 +28,7 @@
     "cheerio": "0.10.5",
     "nodepie": "0.5.0",
     "htmlparser": "1.7.6",
-    "soupselect": "0.2.0"
+    "soupselect": "0.2.0",
     "node-trello": "~> 0.2.0"
   },
 
