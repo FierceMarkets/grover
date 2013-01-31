@@ -82,6 +82,6 @@ trelloIt = (subject, msg) ->
     name: subject
     idList: '510acfdfeca4af654e004e83'
 
-  t.post "/1/cards", args, (err, data) ->
+  t.get "/1/cards", args, (err, data) ->
     msg.send err if err
     msg.send "Added card: " + args.name + " - " + data.url
