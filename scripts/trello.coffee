@@ -82,6 +82,9 @@ trelloIt = (subject, msg) ->
     name: subject
     idList: '510acfdfeca4af654e004e83'
 
+  msg.send 'I AM WORKING:'
+  msg.send 'API KEY: ' + process.env.TRELLO_API_KEY
+  msg.send 'TOKEN: ' + process.env.TRELLO_TOKEN
   t.get "/1/cards", args, (err, data) ->
     msg.send err if err
     msg.send "Added card: " + args.name + " - " + data.url
