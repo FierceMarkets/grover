@@ -71,30 +71,31 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         if res.statusCode isnt 200
           return
-    jsdom = require 'jsdom'
-    jsdom.env(
-      html: msg.match[0]
-      scripts: [
-        'http://code.jquery.com/jquery-1.7.2.min.js'
-      ]
-      done: (errors, window) ->
-        unless errors
-          $ = window.$
-          title = $('title').text()
+        else
+          jsdom = require 'jsdom'
+          jsdom.env(
+            html: msg.match[0]
+            scripts: [
+              'http://code.jquery.com/jquery-1.7.2.min.js'
+            ]
+            done: (errors, window) ->
+              unless errors
+                $ = window.$
+                title = $('title').text()
 
-          if title
-            title = title
-            list = '510acfdfeca4af654e004e84'
-          else
-            title = url
-            list = '510be43bbfd03ea75700314b'
-          args =
-            name: title
-            idList: list
-            desc: url
+                if title
+                  title = title
+                  list = '510acfdfeca4af654e004e84'
+                else
+                  title = url
+                  list = '510be43bbfd03ea75700314b'
+                args =
+                  name: title
+                  idList: list
+                  desc: url
 
-          trelloIt url, args, msg
-    )
+                trelloIt url, args, msg
+          )
 
 trelloIt = (subject, args, msg) ->
   Trello = require("node-trello");
