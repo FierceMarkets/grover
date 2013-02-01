@@ -61,7 +61,7 @@ module.exports = (robot) ->
 
     trelloIt subject, '510acfdfeca4af654e004e85', msg
 
-  robot.hear /http(s?):\/\/(.*)/i, (msg) ->
+  robot.hear /^http(s?):\/\/(.*)/i, (msg) ->
     url = msg.match[0]
     unless process.env.TRELLO_API_KEY?
       msg.send "Please specify the Trello API key in TRELLO_API_KEY"
@@ -72,24 +72,24 @@ module.exports = (robot) ->
     ###unless process.env.TRELLO_LIST_ID?
       msg.send "Please specify the Trello List ID in TRELLO_LIST_ID"
       return###
-    ignore = url.match(/\.(png|jpg|jpeg|gif|txt|zip|tar\.bz|js|css)/)
-    unless ignore
-      jsdom = require 'jsdom'
-      jsdom.env(
-        html: msg.match[0]
-        scripts: [
-          'http://code.jquery.com/jquery-1.7.2.min.js'
-        ]
-        done: (errors, window) ->
-          unless errors
-            $ = window.$
-            title = $('title').text()
+    ###ignore = url.match(/\.(png|jpg|jpeg|gif|txt|zip|tar\.bz|js|css)/)
+    unless ignore###
+    jsdom = require 'jsdom'
+    jsdom.env(
+      html: msg.match[0]
+      scripts: [
+        'http://code.jquery.com/jquery-1.7.2.min.js'
+      ]
+      done: (errors, window) ->
+        unless errors
+          $ = window.$
+          title = $('title').text()
 
-            if title
-              url = url + ' [' + title + ']'
+          if title
+            url = url + ' [' + title + ']'
 
-            trelloIt url, '510acfdfeca4af654e004e84', msg
-      )
+          trelloIt url, '510acfdfeca4af654e004e84', msg
+    )
 
 trelloIt = (subject, list, msg) ->
   Trello = require("node-trello");
