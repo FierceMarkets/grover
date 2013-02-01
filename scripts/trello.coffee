@@ -69,7 +69,7 @@ module.exports = (robot) ->
       return
     msg.http(url)
       .get() (err, res, body) ->
-        if res.statusCode isnt '200'
+        if res.statusCode isnt 200
           return
     jsdom = require 'jsdom'
     jsdom.env(
