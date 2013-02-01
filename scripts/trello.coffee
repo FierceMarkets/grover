@@ -80,7 +80,7 @@ module.exports = (robot) ->
 
           if title
             title = title
-            list = '510acfdfeca4af654e004e85'
+            list = '510acfdfeca4af654e004e84'
           else
             title = url
             list = '510be43bbfd03ea75700314b'
