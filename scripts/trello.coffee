@@ -41,11 +41,10 @@ module.exports = (robot) ->
     unless process.env.TRELLO_TOKEN?
       msg.send "Please specify the Trello token in TRELLO_TOKEN"
       return
-    ###unless process.env.TRELLO_LIST_ID?
-      msg.send "Please specify the Trello List ID in TRELLO_LIST_ID"
-      return###
-
-    trelloIt subject, '510acfdfeca4af654e004e85', msg
+    args =
+      name: subject
+      idList: '510acfdfeca4af654e004e85'
+    trelloIt subject, args, msg
 
   robot.hear /^we (sh|c)ould (.*)/i, (msg) ->
     subject = msg.match[2]
@@ -55,11 +54,10 @@ module.exports = (robot) ->
     unless process.env.TRELLO_TOKEN?
       msg.send "Please specify the Trello token in TRELLO_TOKEN"
       return
-    ###unless process.env.TRELLO_LIST_ID?
-      msg.send "Please specify the Trello List ID in TRELLO_LIST_ID"
-      return###
-
-    trelloIt subject, '510acfdfeca4af654e004e85', msg
+    args =
+      name: subject
+      idList: '510acfdfeca4af654e004e85'
+    trelloIt subject, args, msg
 
   robot.hear /^http(s?):\/\/(.*)/i, (msg) ->
     url = msg.match[0]
@@ -69,11 +67,6 @@ module.exports = (robot) ->
     unless process.env.TRELLO_TOKEN?
       msg.send "Please specify the Trello token in TRELLO_TOKEN"
       return
-    ###unless process.env.TRELLO_LIST_ID?
-      msg.send "Please specify the Trello List ID in TRELLO_LIST_ID"
-      return###
-    ###ignore = url.match(/\.(png|jpg|jpeg|gif|txt|zip|tar\.bz|js|css)/)
-    unless ignore###
     jsdom = require 'jsdom'
     jsdom.env(
       html: msg.match[0]
@@ -86,17 +79,22 @@ module.exports = (robot) ->
           title = $('title').text()
 
           if title
-            url = url + ' [' + title + ']'
+            title = title
+            list = '510acfdfeca4af654e004e85'
+          else
+            title = url
+            list = '510be43bbfd03ea75700314b'
+          args =
+            name: title
+            idList: list
+            desc: url
 
-          trelloIt url, '510acfdfeca4af654e004e84', msg
+          trelloIt url, args, msg
     )
 
-trelloIt = (subject, list, msg) ->
+trelloIt = (subject, args, msg) ->
   Trello = require("node-trello");
   t = new Trello(process.env.TRELLO_API_KEY, process.env.TRELLO_TOKEN);
-  args =
-    name: subject
-    idList: list
 
   t.post "/1/cards", args, (err, data) ->
     msg.send err if err
