@@ -122,3 +122,6 @@ module.exports = (robot) ->
 
   robot.hear /secur(e|ity)/i, (msg) ->
     msg.send 'TODO: add security'
+
+  robot.respond /(where is )?jenkins(\?)?/i, (msg) ->
+    msg.send 'https://ci.fiercemarkets.com:8443/'
