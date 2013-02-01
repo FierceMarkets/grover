@@ -67,6 +67,10 @@ module.exports = (robot) ->
     unless process.env.TRELLO_TOKEN?
       msg.send "Please specify the Trello token in TRELLO_TOKEN"
       return
+    msg.http(url)
+      .get() (err, res, body) ->
+        if res.statusCode isnt '200'
+          return
     jsdom = require 'jsdom'
     jsdom.env(
       html: msg.match[0]
