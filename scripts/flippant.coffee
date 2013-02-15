@@ -18,6 +18,6 @@
 #   jeremy-green
 
 module.exports = (robot) ->
-  robot.hear /carson?/i, (msg) ->
+  robot.hear /(.*)/i, (msg) ->
     if msg.message.user.name is 'Carson Evans'
     	msg.reply 'Stop being so FLIPPANT!'
