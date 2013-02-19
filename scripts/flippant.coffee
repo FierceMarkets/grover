@@ -17,7 +17,7 @@
 # Author:
 #   jeremy-green
 
-module.exports = (robot) ->
+###module.exports = (robot) ->
   robot.hear /(.*)/i, (msg) ->
     if msg.message.user.name is 'Carson Evans'
-    	msg.reply 'Stop being so FLIPPANT!'
+    	msg.reply 'Stop being so FLIPPANT!'###
