@@ -23,7 +23,9 @@
 module.exports = (robot) ->
 
   robot.hear /(maurice)/i, (msg) ->
-    msg.send "https://fiercemarkets.campfirenow.com/room/470540/uploads/3090344/maurice-2.gif"
+    roll = Math.floor(Math.random() * 20) + 1
+    if roll is 1
+        msg.send "https://fiercemarkets.campfirenow.com/room/470540/uploads/3090344/maurice-2.gif"
 
   robot.respond /maurice me/i, (msg) ->
     msg.send "https://fiercemarkets.campfirenow.com/room/470540/uploads/3090344/maurice-2.gif"
@@ -33,4 +35,6 @@ module.exports = (robot) ->
     msg.send "https://fiercemarkets.campfirenow.com/room/470540/uploads/3090344/maurice-2.gif" for i in [0...count]
 
   robot.hear /.*(dance|happy).*/i, (msg) ->
-    msg.send "https://fiercemarkets.campfirenow.com/room/470540/uploads/3090344/maurice-2.gif"
+    roll = Math.floor(Math.random() * 20) + 1
+    if roll is 1
+        msg.send "https://fiercemarkets.campfirenow.com/room/470540/uploads/3090344/maurice-2.gif"

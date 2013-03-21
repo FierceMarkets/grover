@@ -19,7 +19,9 @@
 
 module.exports = (robot) ->
   robot.hear /ste(ve|phen)|job(s|z)?/i, (msg) ->
-    imageMe msg
+    roll = Math.floor(Math.random() * 20) + 1
+    if roll is 1
+      imageMe msg
 
 imageMe = (msg) ->
   msg.http('http://ajax.googleapis.com/ajax/services/search/images')

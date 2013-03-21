@@ -24,8 +24,10 @@
 
 module.exports = (robot) ->
   robot.hear /(satan|666|devil|lucifer|santa|stan)/i, (msg) ->
-    imageMe msg, msg.match[1], (url) ->
-      msg.send url
+    roll = Math.floor(Math.random() * 10) + 1
+    if roll is 1
+      imageMe msg, msg.match[1], (url) ->
+        msg.send url
 
 imageMe = (msg, query, cb) ->
   msg.http('http://ajax.googleapis.com/ajax/services/search/images')

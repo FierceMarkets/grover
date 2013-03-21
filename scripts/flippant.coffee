@@ -20,4 +20,6 @@
 ###module.exports = (robot) ->
   robot.hear /(.*)/i, (msg) ->
     if msg.message.user.name is 'Carson Evans'
-    	msg.reply 'Stop being so FLIPPANT!'###
+        roll = Math.floor(Math.random() * 20) + 1
+        if roll is 1
+    	   msg.reply 'Stop being so FLIPPANT!'###

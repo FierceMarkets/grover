@@ -20,7 +20,7 @@
 module.exports = (robot) ->
   robot.hear /(rick)/i, (msg) ->
     roll = Math.floor(Math.random() * 20) + 1
-    if roll is 20
+    if roll is 1
       imageMe msg
 
 imageMe = (msg) ->

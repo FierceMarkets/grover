@@ -19,7 +19,9 @@
 
 module.exports = (robot) ->
   robot.hear /max|drive/i, (msg) ->
-    imageMe msg
+    roll = Math.floor(Math.random() * 10) + 1
+    if roll is 1
+      imageMe msg
 
 imageMe = (msg) ->
   msg.http('http://ajax.googleapis.com/ajax/services/search/images')
