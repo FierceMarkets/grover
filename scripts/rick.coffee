@@ -19,7 +19,10 @@
 
 module.exports = (robot) ->
   robot.hear /(rick)/i, (msg) ->
-    imageMe msg
+    roll = Math.floor(Math.random() * 20) + 1
+    if (roll is 20) {
+      imageMe msg
+    }
 
 imageMe = (msg) ->
   msg.http('http://ajax.googleapis.com/ajax/services/search/images')
