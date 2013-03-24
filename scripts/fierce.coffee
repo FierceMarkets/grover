@@ -115,6 +115,7 @@ module.exports = (robot) ->
   robot.hear /(^| )alan/i, (msg) ->
     roll = Math.floor(Math.random() * 20) + 1
       if roll is 1
+        msg send 'I hate this script'
         msg.send "http://www.youtube.com/watch?v=aXqkNF8fgs8"
 
   robot.hear /right about now/i, (msg) ->
