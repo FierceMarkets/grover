@@ -104,38 +104,38 @@ module.exports = (robot) ->
 
   robot.hear /(ETC|Escalate to Carson)/i, (msg) ->
     roll = Math.floor(Math.random() * 10) + 1
-      if roll is 1
-        msg.send "http://www.salem-news.com/stimg/august042010/f-bomb-2.jpg"
+    if roll is 1
+      msg.send "http://www.salem-news.com/stimg/august042010/f-bomb-2.jpg"
 
   robot.hear /what should (i|we) do about/i, (msg) ->
     roll = Math.floor(Math.random() * 20) + 1
-      if roll is 1
-        msg.send "Escalate to Carson!"
+    if roll is 1
+      msg.send "Escalate to Carson!"
 
   robot.hear /(^| )alan/i, (msg) ->
     roll = Math.floor(Math.random() * 20) + 1
-      if roll is 1
-        msg.send "http://www.youtube.com/watch?v=aXqkNF8fgs8"
+    if roll is 1
+      msg.send "http://www.youtube.com/watch?v=aXqkNF8fgs8"
 
   robot.hear /right about now/i, (msg) ->
     roll = Math.floor(Math.random() * 6) + 1
-      if roll is 1
-        msg.send "Funk Soul Brother"
+    if roll is 1
+      msg.send "Funk Soul Brother"
 
   robot.hear /(pause|paws)/i, (msg) ->
     roll = Math.floor(Math.random() * 20) + 1
-      if roll is 1
-        msg.send "http://www.wppl.org/kidsteens/paws.jpg"
+    if roll is 1
+      msg.send "http://www.wppl.org/kidsteens/paws.jpg"
 
   robot.hear /(phil|philip|phillip|fill)/i, (msg) ->
     roll = Math.floor(Math.random() * 10) + 1
-      if roll is 1
-        msg.send "https://fiercemarkets.campfirenow.com/room/470540/uploads/3179113/philweb1.jpg"
+    if roll is 1
+      msg.send "https://fiercemarkets.campfirenow.com/room/470540/uploads/3179113/philweb1.jpg"
 
   robot.hear /secur(e|ity)/i, (msg) ->
     roll = Math.floor(Math.random() * 6) + 1
-      if roll is 1
-        msg.send 'TODO: add security'
+    if roll is 1
+      msg.send 'TODO: add security'
 
   robot.respond /(where is )?jenkins(\?)?/i, (msg) ->
     msg.send 'https://ci.fiercemarkets.com:8443/'
