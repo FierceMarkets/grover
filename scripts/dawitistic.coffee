@@ -26,4 +26,4 @@ module.exports = (robot) ->
 dawitMe = (msg) ->
   msg.http('http://dawitistics.com/dawitistic.txt')
     .get() (err, res, body) ->
-    msg.send body
+      msg.send body
