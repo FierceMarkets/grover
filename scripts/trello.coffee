@@ -100,7 +100,6 @@ module.exports = (robot) ->
 trelloIt = (subject, args, msg) ->
   Trello = require("node-trello");
   t = new Trello(process.env.TRELLO_API_KEY, process.env.TRELLO_TOKEN);
-
   t.post "/1/cards", args, (err, data) ->
     msg.send err if err
     msg.send "Added card: " + args.name + " - " + data.url
