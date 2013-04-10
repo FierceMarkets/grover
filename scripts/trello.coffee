@@ -69,8 +69,7 @@ module.exports = (robot) ->
       msg.send "Please specify the Trello token in TRELLO_TOKEN"
       return
     msg.send 'going for it...'
-    msg.http(url)
-      .get() (err, res, body) ->
+    msg.http(url).get() (err, res, body) ->
         msg.send 'got the url: ' + url
         if res.statusCode isnt 200
           msg.send 'bad status code' + res.statusCode
