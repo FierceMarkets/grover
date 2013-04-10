@@ -69,7 +69,7 @@ module.exports = (robot) ->
       return
     args =
       name: title
-      idList: list
+      idList: '510acfdfeca4af654e004e84'
       desc: url
 
     trelloIt url, args, msg
