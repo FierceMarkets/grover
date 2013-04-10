@@ -71,13 +71,34 @@ module.exports = (robot) ->
     msg.send 'going for it...'
     jsdom = require 'jsdom'
     msg.send 'i have required the jsdom lib'
-    args =
-      name: 'title'
-      idList: '510acfdfeca4af654e004e84'
-      desc: url
+    jsdom.env(
+      html: msg.match[0]
+      scripts: [
+        'http://code.jquery.com/jquery-1.7.2.min.js'
+      ]
+      done: (errors, window) ->
+        msg.send 'i have finished doing whatever loading thing i need to do'
+        unless errors
+          $ = window.$
+          title = $('title').text()
+          msg.send 'i have the title: ' + title
 
-    trelloIt url, args, msg
-    msg.send 'i have failed you'
+          if title
+            title = title
+            list = '510acfdfeca4af654e004e84'
+          else
+            title = url
+            list = '510be43bbfd03ea75700314b'
+          msg.send 'ready for my args'
+          args =
+            name: title
+            idList: list
+            desc: url
+
+          trelloIt url, args, msg
+    )
+
+    msg.send 'i am the end'
 
 trelloIt = (subject, args, msg) ->
   Trello = require("node-trello");
