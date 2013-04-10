@@ -61,12 +61,14 @@ module.exports = (robot) ->
 
   robot.hear /^http(s?):\/\/(.*)/i, (msg) ->
     url = msg.match[0]
+    msg.send 'this is the url: ' + url
     unless process.env.TRELLO_API_KEY?
       msg.send "Please specify the Trello API key in TRELLO_API_KEY"
       return
     unless process.env.TRELLO_TOKEN?
       msg.send "Please specify the Trello token in TRELLO_TOKEN"
       return
+    msg.send 'going for it...'
     msg.http(url)
       .get() (err, res, body) ->
         msg.send 'got the url: ' + url
