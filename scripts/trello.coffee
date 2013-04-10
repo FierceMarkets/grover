@@ -61,44 +61,18 @@ module.exports = (robot) ->
 
   robot.hear /^http(s?):\/\/(.*)/i, (msg) ->
     url = msg.match[0]
-    msg.send 'this is the url: ' + url
     unless process.env.TRELLO_API_KEY?
       msg.send "Please specify the Trello API key in TRELLO_API_KEY"
       return
     unless process.env.TRELLO_TOKEN?
       msg.send "Please specify the Trello token in TRELLO_TOKEN"
       return
-    msg.send 'going for it...'
-    jsdom = require 'jsdom'
-    msg.send 'i have required the jsdom lib'
-    jsdom.env(
-      html: url
-      scripts: [
-        'http://code.jquery.com/jquery-1.7.2.min.js'
-      ]
-      done: (errors, window) ->
-        msg.send 'i have finished doing whatever loading thing i need to do'
-        unless errors
-          $ = window.$
-          title = $('title').text()
-          msg.send 'i have the title: ' + title
+    args =
+      name: title
+      idList: list
+      desc: url
 
-          if title
-            title = title
-            list = '510acfdfeca4af654e004e84'
-          else
-            title = url
-            list = '510be43bbfd03ea75700314b'
-          msg.send 'ready for my args'
-          args =
-            name: title
-            idList: list
-            desc: url
-
-          trelloIt url, args, msg
-    )
-
-    msg.send 'i am the end'
+    trelloIt url, args, msg
 
 trelloIt = (subject, args, msg) ->
   Trello = require("node-trello");
