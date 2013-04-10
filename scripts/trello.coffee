@@ -61,21 +61,33 @@ module.exports = (robot) ->
 
   robot.hear /^http(s?):\/\/(.*)/i, (msg) ->
     url = msg.match[0]
+    unless process.env.TRELLO_API_KEY?
+      msg.send "Please specify the Trello API key in TRELLO_API_KEY"
+      return
+    unless process.env.TRELLO_TOKEN?
+      msg.send "Please specify the Trello token in TRELLO_TOKEN"
+      return
     msg.http(url)
       .get() (err, res, body) ->
+        msg.send 'got the url: ' + url
         if res.statusCode isnt 200
+          msg.send 'bad status code' + res.statusCode
           return
         else
+          msg.send 'ok...status code' + res.statusCode
           jsdom = require 'jsdom'
+          msg.send 'i have required the jsdom lib'
           jsdom.env(
             html: msg.match[0]
             scripts: [
               'http://code.jquery.com/jquery-1.7.2.min.js'
             ]
             done: (errors, window) ->
+              msg.send 'i have finished doing whatever loading thing i need to do'
               unless errors
                 $ = window.$
                 title = $('title').text()
+                msg.send 'i have the title: ' + title
 
                 if title
                   title = title
@@ -83,6 +95,7 @@ module.exports = (robot) ->
                 else
                   title = url
                   list = '510be43bbfd03ea75700314b'
+                msg.send 'ready for my args'
                 args =
                   name: title
                   idList: list
