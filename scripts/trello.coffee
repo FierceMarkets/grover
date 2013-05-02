@@ -68,7 +68,7 @@ module.exports = (robot) ->
       msg.send "Please specify the Trello token in TRELLO_TOKEN"
       return
     args =
-      name: title
+      name: url
       idList: '510acfdfeca4af654e004e84'
       desc: url
 
